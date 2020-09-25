@@ -1,4 +1,5 @@
 1. Researched other api options with real-time data capabilities
-2. Looked into authentication options with each api 
+2. Looked into authentication options with each api  
 3. Create test file to experiment with Oauth outside of project  
+
 4. Do more research on what would be best to track for responsive images-- heart rate or breath rate.
