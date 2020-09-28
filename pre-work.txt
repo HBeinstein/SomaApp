@@ -1,4 +1,0 @@
-1. Looked at documentation for accelerometer sensor in IPhone and how to retrieve & send that data via REST endpoint.
-2. Watch youtube tutorial on Firebase
-
- 
