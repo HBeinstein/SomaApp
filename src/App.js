@@ -4,8 +4,8 @@ import './App.css';
 
 function App() {
 
-  // add here
-
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 
   return (
