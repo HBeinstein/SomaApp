@@ -1,33 +1,21 @@
 import React from 'react';
 import database from './firebase';
 
-function writeUserData(userId, name, email) {
-  database.ref('users/' + userId).set({
-    username: name,
-    email: email,
-  });
-}
-
 function App() {
+  //retrieve data once
+  database
+    .ref('/xAxis/')
+    .once('value')
+    .then(function(snapshot) {
+    let username = snapshot.val();
+    console.log(username);
+  })
 
-
-  console.log(database);
-  // writeUserData('000', 'Hannah', 'meow@gmail.com');
-
-  // let database = firebase.database();
-
-  // var ref = database.ref('somawebapp');
-
-  // ref.on('value', dataReceived, errData)
-
-  // function dataReceived(data) {
-  //   console.log(data);
-  // }
-
-  // function errData(err){
-  //   console.log("err");
-  //   console.log(error);
-  // }
+// stream data
+  let xAxisVal = database.ref('xAxis/');
+  xAxisVal.on('value', function(snapshot) {
+  console.log(snapshot.val());
+});
 
   return (
     <div className="App">
