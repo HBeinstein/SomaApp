@@ -1,4 +1,4 @@
-**Name of Project: Meditation/Breathing App (official name tbd!)**
+**Name of Project: Soma**
 
 Project's Purpose or Goal: My project will be a meditation/mindfulness app that uses the Fitbit API (https://dev.fitbit.com/) to collect biometric data from a user and tracks their heart rate/breath rate. The project will be a web app that allows a user to login to their Fitbit account, and then brings them to a “start meditation” interface. Once a user starts their meditation, they will be able to see a visual (that I’m planning to render using React Three Fiber) that will last a couple of minutes (the duration of the meditation). By connecting the graphics to the biometric information retrieved by the Fitbit API every few seconds, I’ll be able to alter the scene depending on how fast/slow the user’s heart/breath rate is. The goal is to create a visual that reacts in real-time to how relaxed the user is, and provide the user with something to focus on during their meditation.
 
