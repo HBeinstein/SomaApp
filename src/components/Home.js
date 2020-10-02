@@ -1,7 +1,7 @@
 import React from 'react';
-import database from './firebase';
+import database from '../firebase';
 
-function App() {
+function Home() {
   //retrieve data once
   database
     .ref('/xAxis/')
@@ -36,4 +36,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
