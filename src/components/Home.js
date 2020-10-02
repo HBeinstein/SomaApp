@@ -24,7 +24,7 @@ function Home() {
           home 
         </p>
       </header>
-    </div>
+    </div> 
   );
 }
 
