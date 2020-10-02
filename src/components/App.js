@@ -1,11 +1,13 @@
 import React from "react";
 import Home from './Home';
-import Mobile from './Mobile';
+import About from './About';
+import MeditationControl from './MeditationControl';
+import AuthorizationControl from './AuthControl';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  // Link
 } from "react-router-dom";
 
 export default function App() {
@@ -18,8 +20,14 @@ export default function App() {
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/mobile">
-            <Mobile />
+          <Route path="/authorize">
+            <AuthorizationControl />
+          </Route>
+          <Route path="/meditations">
+            <MeditationControl />
+          </Route>
+          <Route path="/about">
+            <About />
           </Route>
         </Switch>
       </div>
