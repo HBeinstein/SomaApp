@@ -21,7 +21,7 @@ function Home() {
     <div className="App">
       <header className="App-header">
         <p>
-          home
+          home 
         </p>
       </header>
     </div>
