@@ -3,26 +3,20 @@ import database from '../firebase';
 
 function Auth() {
 
-  //FETCH PHONE DATA
-
-  // const database = require('./firebase');
-
+  //Authorize sensor transmission
   // let transmittingData = false; 
   // let counter = 50;
 
-
-  // document.getElementById("button").addEventListener("click", requestPermission);
-
-  // function requestPermission(){
-  //   DeviceOrientationEvent.requestPermission()
-  //   .then(res => {
-  //     if(res === "granted") {
-  //       console.log("successfully authenticated")
-  //     } else {
-  //       console.log('oops')
-  //     }
-  //   })
-  // }
+  function requestPermission(){
+    DeviceOrientationEvent.requestPermission()
+    .then(res => {
+      if(res === "granted") {
+        console.log("successfully authenticated")
+      } else {
+        console.error('error')
+      }
+    })
+  }
 
   // document.getElementById("toggleDataTransmission").addEventListener("click", toggleDataTransmission);
 
@@ -50,28 +44,11 @@ function Auth() {
   //   }
   // }
 
-
-  // ref.on('value', function(dataSnapshot) {
-    
-  // });
-
-
-
-// INTERACTING WITH DB:
-
-//   document.getElementById("sendData").addEventListener("click", sendData);
-
-//   function sendData() {
-//     console.log("hi")
-//     let axisRef = database.ref();
-//     axisRef.set({
-//       z: {
-//         value: 5
-//       }
-//     });
-//   }
   return (
-    <h1>ALLOW AUTH</h1>
+    <React.Fragment>
+      <button onClick={requestPermission}></button>
+      <h1>ALLOW AUTH</h1>
+    </React.Fragment>
   );
 }
 
