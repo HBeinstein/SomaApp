@@ -1,8 +1,9 @@
 import React from "react";
+import Auth from './Auth';
 
 function AuthControl() {
   return (
-    <h1>AUTH CONTROL</h1>
+    <Auth />
   );
 }
 

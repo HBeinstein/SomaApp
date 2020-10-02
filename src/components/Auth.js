@@ -1,7 +1,7 @@
 import React from 'react';
 import database from '../firebase';
 
-export default function Auth() {
+function Auth() {
 
   //FETCH PHONE DATA
 
