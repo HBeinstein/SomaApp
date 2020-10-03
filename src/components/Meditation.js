@@ -1,8 +1,10 @@
 import React from 'react';
+import database from '../firebase';
+// const database = require('./../firebase');
+require('firebase/database');
 
 function Meditation() {
 
-  const database = require('./firebase');
 
   //COLLECT DATA FROM PHONE AND CONSOLE LOG IT (W0RKING ON WRITING TO DB)
 
@@ -53,13 +55,15 @@ function Meditation() {
 
 
   // READ data from db, retrieves once
-  database
-    .ref('/zAxis/')
-    .once('value')
-    .then(function(snapshot) {
-    let zAxis = snapshot.val();
-    console.log(zAxis);
-  })
+  function getData() {
+    database
+      .ref('/zAxis/')
+      .once('value')
+      .then(function(snapshot) {
+      let zAxis = snapshot.val();
+      console.log(zAxis);
+    })
+  }
 
 // READ data from db, updates on change in value
 //   let xAxisVal = database.ref('xAxis/');
@@ -70,7 +74,10 @@ function Meditation() {
 
 
 return (
-<h3>Mediation Page</h3>
+  <React.Fragment>
+    <h3>Meditation Page</h3>
+    <button onClick={getData}></button>
+  </React.Fragment>
 );
 }
 

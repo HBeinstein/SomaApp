@@ -1,9 +1,13 @@
 import React from "react";
+import Meditation from './Meditation';
 
 function MeditationControl() {
 
   return(
-    <h1>MEDITATION CONTROL</h1>
+    <React.Fragment>
+      <h1>MEDITATION CONTROL</h1>
+      <Meditation />
+    </React.Fragment>
   );
 }
 
