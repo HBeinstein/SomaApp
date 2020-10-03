@@ -1,9 +1,37 @@
 import React from 'react';
-import database from '../Firebase';
 
 function Meditation() {
 
   const database = require('./firebase');
+
+  //COLLECT DATA FROM PHONE AND CONSOLE LOG IT (W0RKING ON WRITING TO DB)
+
+  // document.getElementById("toggleDataTransmission").addEventListener("click", toggleDataTransmission);
+
+  // //recursive version
+  // function toggleDataTransmission() {
+  //   transmittingData = !transmittingData;
+  //   console.log(transmittingData);
+
+  //   if (!transmittingData){
+  //     // window.removeEventListener('deviceorientation', printData); //orientation event
+  //     window.removeEventListener('devicemotion', printData); //acceleration event
+  //   } else {
+  //     // window.addEventListener('deviceorientation', printData); //orientation event
+  //     window.addEventListener('devicemotion', printData); //acceleration event
+  //   } 
+  // }
+
+  // function printData(res){
+  //   if(counter % 50 === 0) {
+  //     // console.log(res.alpha);
+  //     console.log(`${res.accelerationIncludingGravity.z}`); //acceleration event
+  //     counter += 1;
+  //   } else {
+  //     counter += 1;
+  //   }
+  // }
+
 
   // WRITE data to db, updates when value is changed
 
