@@ -1,5 +1,7 @@
 import React from "react";
 import Meditation from './Meditation';
+import MeditationEnd from './MeditationEnd';
+import MeditationSelection from './MeditationSelection';
 
 function MeditationControl() {
 
