@@ -1,36 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Scene from './Scene';
 import { database } from '../firebase';
 // require('firebase/database');
 import './../assets/css/animation.css'
 
 function Meditation() {
-  // READ data from db, retrieves once
-  // function getData() {
-  //   database
-  //     .ref('/zAxis/')
-  //     .once('value')
-  //     .then(function(snapshot) {
-  //     let zAxis = snapshot.val();
-  //     console.log(zAxis);
-  //   })
-  // }
+  const [view, setView] = useState('startMeditation');
 
-  // // READ data from db, updates on change in value
+  //READ data from db, updates on change in value, changes view to render scene
   function getData() {
-  let zAxisVal = database.ref('accelerometerData/');
-  console.log(zAxisVal);
-  zAxisVal.on('value', function(snapshot) {
-  console.log(snapshot.val());
-});
+    let zAxisVal = database.ref('accelerometerData/');
+    console.log(zAxisVal);
+
+    zAxisVal.on('value', function(snapshot) {
+      console.log(snapshot.val());
+    });
+
+    setView('meditation');
   }
 
-return (
-  <React.Fragment>
-    <h3>Meditation Page</h3>
-    <button onClick={getData}>Start Meditation</button>
-    <div className='animation-test'></div>
-  </React.Fragment>
-);
+  //Switch view back to start meditation screen
+  function endMeditation(){
+    setView('startMeditation');
+  }
+
+  //Decide which view to render
+  if(view === "meditation") {
+    return (
+      <React.Fragment>
+        <Scene />
+        <button onClick={endMeditation}>End Meditation</button>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <h3>Meditation Page</h3>
+        <button onClick={getData}>Start Meditation</button>
+      </React.Fragment>
+    );
+  }
 }
 
 export default Meditation;
