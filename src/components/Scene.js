@@ -3,6 +3,13 @@ import * as THREE from 'three';
 import * as GLTFLoader from 'three/examples/jsm/loaders/GLTFLoader';
 // import OrbitControls from "three-orbitcontrols";
 
+//Canvas Size
+
+const canvasSize = {
+  height: '100vh',
+  width: '100vw',
+}
+
 function Scene() {
   const threeScene = useRef(null);
 
@@ -20,7 +27,7 @@ function Scene() {
     );
 
     let renderer = new THREE.WebGLRenderer({antialias: true, alpha:true});
-    renderer.setSize(width, height)
+    renderer.setSize(width, height);
     renderer.setPixelRatio(window.devicePixelRatio);
 
     // let loader = new GLTFLoader;
@@ -47,7 +54,7 @@ function Scene() {
     
   return(
     <React.Fragment>
-      <div className="threeScene" ref={threeScene}>
+      <div className="threeScene" style={canvasSize} ref={threeScene}>
       </div>
     </React.Fragment>
   );
