@@ -19,7 +19,7 @@ function Scene() {
       500 //far plane
     );
 
-    let renderer = new THREE.WebGLRenderer({antialias: true});
+    let renderer = new THREE.WebGLRenderer({antialias: true, alpha:true});
     renderer.setSize(width, height)
     renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -31,10 +31,12 @@ function Scene() {
     const resizeScene = () => {
       width = threeScene.current.clientWidth;
       height = threeScene.current.clientHeight;
+      console.log(threeScene.current, threeScene.current.clientWidth);
       renderer.setSize(width, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.render( scene, camera );
+      window.removeEventListener('resize', resizeScene);
     }
     
     threeScene.current.appendChild(renderer.domElement)
