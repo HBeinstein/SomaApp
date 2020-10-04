@@ -1,0 +1,8 @@
+.animation-test {
+  margin-top: 10px;
+  background-color: aqua;
+  height: 50px;
+  width: 50px;
+}
+
+.item{ width: calc(100% - 60px); height: calc(100% - 60px); } 
