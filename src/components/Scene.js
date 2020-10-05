@@ -52,11 +52,7 @@ function Scene(props) {
       camera.updateProjectionMatrix()
       renderScene()
     }
-
-    console.log(` t rex is ${tRex}`);
-
-
-
+    
     //Define animation actions here
     function animate () {
       // tRex.rotation.x += 0.01
