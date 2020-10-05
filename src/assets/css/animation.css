@@ -1,8 +1,37 @@
-.animation-test {
-  margin-top: 10px;
-  background-color: aqua;
-  height: 50px;
-  width: 50px;
+/* canvas {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid red;
+} */
+
+html {
+  box-sizing: border-box;
 }
 
-.item{ width: calc(100% - 60px); height: calc(100% - 60px); } 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.vis {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.threeScene {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
