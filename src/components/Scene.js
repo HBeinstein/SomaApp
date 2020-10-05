@@ -24,6 +24,7 @@ function Scene(props) {
     let loader = new GLTFLoader;
 
     loader.load('./models/tRex/scene.gltf', gltf => {
+      scene.add(gltf.scene);
       tRex = gltf;
     });
 
