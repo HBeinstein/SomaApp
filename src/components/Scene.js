@@ -20,6 +20,7 @@ function Scene(props) {
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    
 
     let loader = new GLTFLoader;
 
@@ -40,69 +41,55 @@ function Scene(props) {
     renderer.setClearColor( 0xffffff, 0);
     renderer.setSize(width, height);
 
-    const renderScene = () => {
-      renderer.render(scene, camera)
-    }
 
-    const handleResize = () => {
-      width = mount.current.clientWidth
-      height = mount.current.clientHeight
-      renderer.setSize(width, height)
-      camera.aspect = width / height
-      camera.updateProjectionMatrix()
-      renderScene()
-    }
+
+    // const handleResize = () => {
+    //   width = mount.current.clientWidth
+    //   height = mount.current.clientHeight
+    //   renderer.setSize(width, height)
+    //   camera.aspect = width / height
+    //   camera.updateProjectionMatrix()
+    //   renderScene()
+    // }
+
+    function handleResizingWindow(renderer) {
+      const width = mount.clientWidth;
+      const height = mount.clientHeight;
+      const needResize = mount.width !== width || mount.height !== height;
+      if (needResize) {
+        renderer.setSize(width, height, false);
+      }
+      return needResize;
+  }
     
     //Define animation actions here
-    function animate () {
-      // tRex.rotation.x += 0.01
-      // tRex.rotation.y += 0.01
+    function animate (time) {
+      time *= 0.001;  // convert to seconds --> eventually put dynamic value here
 
-      renderScene()
-      activelyAnimating = window.requestAnimationFrame(animate)
-    }
+      // if (handleResizingWindow(renderer)) {
+      //   const canvas = renderer.domElement;
+      //   camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      //   camera.updateProjectionMatrix();
+      // }
 
-    //Starts animation by requesting animation frame
-    const startAnimation = () => {
-      if (!activelyAnimating) {
-        activelyAnimating = requestAnimationFrame(animate);
+      if (tRex) {
+          tRex.scene.rotation.y = time;
       }
-    }
 
-    //Ends animation by canceling animation frame
-    const endAnimation = () => {
-      cancelAnimationFrame(activelyAnimating);
-      activelyAnimating = null;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate)
     }
 
     //Append scene to DOM, start animation
     mount.current.appendChild(renderer.domElement);
-    window.addEventListener('resize', handleResize);
-    console.log(scene);
-    startAnimation();
-
-    controls.current = { startAnimation, endAnimation };
-    
-    return () => {
-      endAnimation();
-      window.removeEventListener('resize', handleResize);
-      mount.current.removeChild(renderer.domElement);
-      scene.remove(tRex);
-    }
+    window.addEventListener('resize', handleResizingWindow);
+    animate();
   }, [])
-
-  useEffect(() => {
-    if (isAnimating) {
-      controls.current.startAnimation();
-    } else {
-      controls.current.endAnimation();
-    }
-  }, [isAnimating])
   
   return (
     <React.Fragment>
       <div className="animation-container" ref={mount} onClick={() => handleAnimation(!isAnimating)} />
-      <button className="end-mediation-button" onClick={props.endMediation}>End Meditation</button>
+      <button className="end-mediation-button" onClick={props.endMeditation}>End Meditation</button>
     </React.Fragment>
   );
 }
