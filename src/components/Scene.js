@@ -43,24 +43,24 @@ function Scene(props) {
 
 
 
-    // const handleResize = () => {
-    //   width = mount.current.clientWidth
-    //   height = mount.current.clientHeight
-    //   renderer.setSize(width, height)
-    //   camera.aspect = width / height
-    //   camera.updateProjectionMatrix()
-    //   renderScene()
-    // }
+    const handleResize = () => {
+      width = mount.current.clientWidth
+      height = mount.current.clientHeight
+      renderer.setSize(width, height)
+      camera.aspect = width / height
+      camera.updateProjectionMatrix()
+      animate()
+    }
 
-    function handleResizingWindow(renderer) {
-      const width = mount.clientWidth;
-      const height = mount.clientHeight;
-      const needResize = mount.width !== width || mount.height !== height;
-      if (needResize) {
-        renderer.setSize(width, height, false);
-      }
-      return needResize;
-  }
+  //   function handleResizingWindow(renderer) {
+  //     const width = mount.clientWidth;
+  //     const height = mount.clientHeight;
+  //     const needResize = mount.width !== width || mount.height !== height;
+  //     if (needResize) {
+  //       renderer.setSize(width, height, false);
+  //     }
+  //     return needResize;
+  // }
     
     //Define animation actions here
     function animate (time) {
@@ -82,13 +82,13 @@ function Scene(props) {
 
     //Append scene to DOM, start animation
     mount.current.appendChild(renderer.domElement);
-    window.addEventListener('resize', handleResizingWindow);
+    window.addEventListener('resize', handleResize);
     animate();
   }, [])
   
   return (
     <React.Fragment>
-      <div className="animation-container" ref={mount} onClick={() => handleAnimation(!isAnimating)} />
+      <div className="animation-container" ref={mount} />
       <button className="end-mediation-button" onClick={props.endMeditation}>End Meditation</button>
     </React.Fragment>
   );
