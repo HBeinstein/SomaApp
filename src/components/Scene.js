@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, Component } from 'react';
 import * as THREE from 'three';
-import * as GLTFLoader from 'three/examples/jsm/loaders/GLTFLoader';
+import { AmbientLight } from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 // import OrbitControls from "three-orbitcontrols";
 
 //Canvas Size
@@ -8,41 +9,47 @@ import * as GLTFLoader from 'three/examples/jsm/loaders/GLTFLoader';
 const canvasSize = {
   height: '100vh',
   width: '100vw',
+  backgroundColor: 'blue'
 }
 
 function Scene() {
   const threeScene = useRef(null);
+  let scene = new THREE.Scene();
 
+  let camera = new THREE.PerspectiveCamera(
+    45, // vertical field of view
+    window.innerWidth/window.innerHeight, // aspect ratio
+    1, //near plane
+    // 1000 //far plane
+  );
+  let renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+
+  let loader = new GLTFLoader;
+  loader.load('./models/tRex/scene.gltf', gltf => {
+    console.log(gltf.scene)
+    scene.add(gltf.scene);
+  });
+  
   useEffect(() => {
     let width = threeScene.current.clientWidth;
     let height = threeScene.current.clientHeight;
 
-    let scene = new THREE.Scene();
+    camera.position.set(0, 1, 10);
 
-    let camera = new THREE.PerspectiveCamera(
-      45, // vertical field of view
-      window.innerWidth/window.innerHeight, // aspect ratio
-      1, //near plane
-      500 //far plane
-    );
+    const ambient = new THREE.AmbientLight(0X404040, 10);
+    scene.add(ambient);
 
-    let renderer = new THREE.WebGLRenderer({antialias: true, alpha:true});
     renderer.setSize(width, height);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    // let loader = new GLTFLoader;
-    //loader.load(FILE PATH HERE, function(gltf){
-      //scene.add(MODELNAMEHERE);
-    //);
-    
     const resizeScene = () => {
       width = threeScene.current.clientWidth;
       height = threeScene.current.clientHeight;
-      console.log(threeScene.current, threeScene.current.clientWidth);
       renderer.setSize(width, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.render( scene, camera );
+      console.log(scene);
       window.removeEventListener('resize', resizeScene);
     }
     
