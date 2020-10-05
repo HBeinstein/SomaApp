@@ -1,4 +1,4 @@
-/* ------------------- HANNAH PLZ SAVE ---------------------*/
+/* ------------------- OG PLZ SAVE ---------------------*/
 
 import React, { useRef, useEffect, Component } from 'react';
 import * as THREE from 'three';
@@ -115,10 +115,13 @@ const Scene = () => {
 
     let loader = new GLTFLoader;
 
+    let tRex = null;
     loader.load('./models/tRex/scene.gltf', gltf => {
-      console.log(gltf.scene);
       scene.add(gltf.scene);
+      tRex = gltf.scene.children[1];
+      console.log(`trex ${tRex}`)
     });
+
 
     const geometry = new THREE.BoxGeometry(1, 1, 1)
     const material = new THREE.MeshBasicMaterial({ color: 0xff00ff })
@@ -143,10 +146,14 @@ const Scene = () => {
       camera.updateProjectionMatrix()
       renderScene()
     }
-    
-    const animate = () => {
-      cube.rotation.x += 0.01
-      cube.rotation.y += 0.01
+
+    console.log(` t rex is ${tRex}`);
+
+
+
+    function animate () {
+      // tRex.rotation.x += 0.01
+      // tRex.rotation.y += 0.01
 
       renderScene()
       frameId = window.requestAnimationFrame(animate)
