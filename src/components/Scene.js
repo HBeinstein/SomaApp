@@ -70,7 +70,7 @@ function Scene(props) {
     window.addEventListener('resize', handleResize);
     animate();
   }, [])
-  
+   
   return (
     <React.Fragment>
       <div className="animation-container" ref={mount} />
