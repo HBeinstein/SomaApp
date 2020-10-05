@@ -41,8 +41,7 @@ function Scene(props) {
     renderer.setClearColor( 0xffffff, 0);
     renderer.setSize(width, height);
 
-
-
+    //Handle re-render when window is resized (triggered via event listener)
     const handleResize = () => {
       width = mount.current.clientWidth
       height = mount.current.clientHeight
@@ -51,34 +50,20 @@ function Scene(props) {
       camera.updateProjectionMatrix()
       animate()
     }
-
-  //   function handleResizingWindow(renderer) {
-  //     const width = mount.clientWidth;
-  //     const height = mount.clientHeight;
-  //     const needResize = mount.width !== width || mount.height !== height;
-  //     if (needResize) {
-  //       renderer.setSize(width, height, false);
-  //     }
-  //     return needResize;
-  // }
     
-    //Define animation actions here
-    function animate (time) {
-      time *= 0.001;  // convert to seconds --> eventually put dynamic value here
-
-      // if (handleResizingWindow(renderer)) {
-      //   const canvas = renderer.domElement;
-      //   camera.aspect = canvas.clientWidth / canvas.clientHeight;
-      //   camera.updateProjectionMatrix();
-      // }
+    //Define animation actions in here-- will loop and handle animation
+    function animate (value) {
+      value *= 0.001;  // convert to seconds --> eventually put dynamic value here
 
       if (tRex) {
-          tRex.scene.rotation.y = time;
+          tRex.scene.rotation.y = value;
       }
 
       renderer.render(scene, camera);
       requestAnimationFrame(animate)
     }
+
+    console.log(tRex);
 
     //Append scene to DOM, start animation
     mount.current.appendChild(renderer.domElement);
