@@ -8,11 +8,11 @@ html {
   box-sizing: border-box;
 }
 
-*,
+/* *,
 *:before,
 *:after {
   box-sizing: inherit;
-}
+} */
 
 body {
   font-family: sans-serif;
@@ -20,7 +20,7 @@ body {
   margin: 0;
 }
 
-.vis {
+.animation-container {
   position: fixed;
   top: 0;
   right: 0;
@@ -28,10 +28,7 @@ body {
   left: 0;
 }
 
-.threeScene {
+.end-mediation-button {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  z-index: 10;
 }

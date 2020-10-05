@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Meditation from './Meditation';
 import MeditationEnd from './MeditationEnd';
 import MeditationSelection from './MeditationSelection';
 
 function MeditationControl() {
+  const [view, setView] = useState('meditation');
 
-  return(
-    <React.Fragment>
-      <h1>MEDITATION CONTROL</h1>
+  if(view === "meditation"){
+    return(
       <Meditation />
-    </React.Fragment>
-  );
+    );
+  } else if(view === "meditationEnd") {
+    return(
+      <MeditationEnd />
+    );
+  } else {
+    return(
+      <React.Fragment>
+        <MeditationSelection/>
+      </React.Fragment>
+    );
+  }
 }
 
 export default MeditationControl;

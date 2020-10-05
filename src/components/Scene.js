@@ -88,7 +88,7 @@ import '../assets/css/animation.css';
 
 // export default Scene;
 
-/* ------------------- HANNAH PLZ SAVE ---------------------*/
+/* ------------------- OG PLZ SAVE ---------------------*/
 
 /* ----------------------------------------*/
 /* ----------------------------------------*/
@@ -98,41 +98,40 @@ import '../assets/css/animation.css';
 
 /* ------------------- NEW STUFF ---------------------*/
 
-const Scene = () => {
+function Scene(props) {
   const { useRef, useEffect, useState } = React
   const mount = useRef(null)
-  const [isAnimating, setAnimating] = useState(true)
+  const [isAnimating, handleAnimation] = useState(true)
   const controls = useRef(null)
   
   useEffect(() => {
-    let width = mount.current.clientWidth
-    let height = mount.current.clientHeight
-    let frameId
+    let width = mount.current.clientWidth;
+    let height = mount.current.clientHeight;
+    let activelyAnimating;
+    let tRex = null;
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer({ antialias: true })
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
 
     let loader = new GLTFLoader;
 
-    let tRex = null;
     loader.load('./models/tRex/scene.gltf', gltf => {
       scene.add(gltf.scene);
       tRex = gltf.scene.children[1];
-      console.log(`trex ${tRex}`)
+      console.log(`trex ${tRex}`);
     });
 
-
-    const geometry = new THREE.BoxGeometry(1, 1, 1)
-    const material = new THREE.MeshBasicMaterial({ color: 0xff00ff })
-    const cube = new THREE.Mesh(geometry, material)
+    //Add light to scene
     const ambient = new THREE.AmbientLight(0X404040, 10);
     scene.add(ambient);
 
-    camera.position.z = 4
-    // scene.add(cube)
-    renderer.setClearColor('#000000')
-    renderer.setSize(width, height)
+    //Set camera position
+    camera.position.z = 4;
+
+    //Set clear background color in conjunction with alpha:true in renderer & renderer size
+    renderer.setClearColor( 0xffffff, 0);
+    renderer.setSize(width, height);
 
     const renderScene = () => {
       renderer.render(scene, camera)
@@ -151,51 +150,58 @@ const Scene = () => {
 
 
 
+    //Define animation actions here
     function animate () {
       // tRex.rotation.x += 0.01
       // tRex.rotation.y += 0.01
 
       renderScene()
-      frameId = window.requestAnimationFrame(animate)
+      activelyAnimating = window.requestAnimationFrame(animate)
     }
 
-    const start = () => {
-      if (!frameId) {
-        frameId = requestAnimationFrame(animate)
+    //Starts animation by requesting animation frame
+    const startAnimation = () => {
+      if (!activelyAnimating) {
+        activelyAnimating = requestAnimationFrame(animate);
       }
     }
 
-    const stop = () => {
-      cancelAnimationFrame(frameId)
-      frameId = null
+    //Ends animation by canceling animation frame
+    const endAnimation = () => {
+      cancelAnimationFrame(activelyAnimating);
+      activelyAnimating = null;
     }
 
-    mount.current.appendChild(renderer.domElement)
-    window.addEventListener('resize', handleResize)
-    start()
+    //Append scene to DOM, start animation
+    mount.current.appendChild(renderer.domElement);
+    window.addEventListener('resize', handleResize);
+    startAnimation();
 
-    controls.current = { start, stop }
+    controls.current = { startAnimation, endAnimation };
     
     return () => {
-      stop()
-      window.removeEventListener('resize', handleResize)
-      mount.current.removeChild(renderer.domElement)
+      endAnimation();
+      window.removeEventListener('resize', handleResize);
+      mount.current.removeChild(renderer.domElement);
 
-      scene.remove(cube)
-      geometry.dispose()
-      material.dispose()
+      scene.remove(tRex);
     }
   }, [])
 
   useEffect(() => {
     if (isAnimating) {
-      controls.current.start()
+      controls.current.startAnimation();
     } else {
-      controls.current.stop()
+      controls.current.endAnimation();
     }
   }, [isAnimating])
   
-  return <div className="vis" ref={mount} onClick={() => setAnimating(!isAnimating)} />
+  return (
+    <React.Fragment>
+      <div className="animation-container" ref={mount} onClick={() => handleAnimation(!isAnimating)} />
+      <button className="end-mediation-button" onClick={props.endMediation}>End Meditation</button>
+    </React.Fragment>
+  );
 }
 
 export default Scene;

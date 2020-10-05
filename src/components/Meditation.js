@@ -28,8 +28,7 @@ function Meditation() {
   if(view === "meditation") {
     return (
       <React.Fragment>
-        <Scene />
-        <button onClick={endMeditation}>End Meditation</button>
+        <Scene endMeditation={endMeditation}/>
       </React.Fragment>
     );
   } else {
