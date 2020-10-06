@@ -71,7 +71,7 @@ function Scene(props) {
     animate();
   }, [])  
    
-  return (
+  return ( 
     <React.Fragment>
       <div className="animation-container" ref={mount} />
       <button className="end-mediation-button" onClick={props.endMeditation}>End Meditation</button>
