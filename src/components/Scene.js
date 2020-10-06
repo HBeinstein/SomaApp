@@ -69,7 +69,7 @@ function Scene(props) {
     mount.current.appendChild(renderer.domElement);
     window.addEventListener('resize', handleResize);
     animate();
-  }, []) 
+  }, [])  
    
   return (
     <React.Fragment>
