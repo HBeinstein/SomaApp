@@ -10,7 +10,7 @@ function Scene(props) {
   const mount = useRef(null)
   const [isAnimating, handleAnimation] = useState(true)
   const controls = useRef(null)
-  let tRex = null;
+  let base = null;
   
   useEffect(() => {
     let width = mount.current.clientWidth;
@@ -24,18 +24,22 @@ function Scene(props) {
 
     let loader = new GLTFLoader;
 
-    loader.load('./models/tRex/scene.gltf', gltf => {
+    loader.load('./models/soma1.gltf', gltf => {
       scene.add(gltf.scene);
-      tRex = gltf;
+      base = gltf;
     });
 
-    console.log(tRex);
+    console.log(base);
     //Add light to scene
-    const ambient = new THREE.AmbientLight(0X404040, 10);
+    const ambient = new THREE.AmbientLight(0X404040, -30);
     scene.add(ambient);
 
-    //Set camera position
-    camera.position.z = 4;
+    // Set camera position
+    camera.position.z = 5;
+    // camera.position.x = 20;
+    camera.position.y = 1;
+    camera.lookAt(10, 5, 0);
+
 
     //Set clear background color in conjunction with alpha:true in renderer & renderer size
     renderer.setClearColor( 0xffffff, 0);
@@ -55,15 +59,15 @@ function Scene(props) {
     function animate (value) {
       value *= 0.001;  // convert to seconds --> eventually put dynamic value here
 
-      if (tRex) {
-          tRex.scene.rotation.y = value;
+      if (base) {
+          // base.scene.rotation.y = value;
       }
 
       renderer.render(scene, camera);
       requestAnimationFrame(animate)
     }
 
-    console.log(tRex);
+    console.log(base);
 
     //Append scene to DOM, start animation
     mount.current.appendChild(renderer.domElement);
