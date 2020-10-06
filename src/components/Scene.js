@@ -77,6 +77,6 @@ function Scene(props) {
       <button className="end-mediation-button" onClick={props.endMeditation}>End Meditation</button>
     </React.Fragment>
   );
-}
+} 
 
 export default Scene;
