@@ -36,7 +36,7 @@ function Scene(props) {
     const loader = new GLTFLoader;
 
     //Load and position model, add to scene, assign model to variable
-    loader.load('./models/soma1.gltf', gltf => {
+    loader.load('./models/somacolortest.gltf', gltf => {
       gltf.scene.position.set(0, -10, 10);
       scene.add(gltf.scene);
       base = gltf;
@@ -44,7 +44,8 @@ function Scene(props) {
 
     // console.log(base);
     //Add light to scene
-    const ambient = new THREE.AmbientLight(0X404040, 10);
+    // const ambient = new THREE.AmbientLight(0X404040, 10);
+     const ambient = new THREE.DirectionalLight(0X404040, 10);
     scene.add(ambient);
 
     // Set camera position
