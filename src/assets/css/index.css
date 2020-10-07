@@ -20,7 +20,7 @@ body {
   margin: 0;
 }
 
-.animation-container {
+#animation-container {
   position: fixed;
   top: 0;
   right: 0;
@@ -31,4 +31,30 @@ body {
 .end-mediation-button {
   position: fixed;
   z-index: 10;
+}
+
+.blue {
+  animation: fadeToBlue 1s linear;
+}
+
+@keyframes fadeToBlue {
+  0% { 
+    background-color: #86D0D9;
+  }
+  100% { 
+    background-color: #84C7BE;
+  }
+}
+
+.teal {
+  animation: fadeToTeal 1s linear;
+}
+
+@keyframes fadeToTeal {
+  0% { 
+    background-color: #84C7BE;
+  }
+  100% { 
+    background-color: #86D0D9; 
+  }
 }

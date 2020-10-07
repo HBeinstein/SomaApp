@@ -2,7 +2,7 @@ import React, { useRef, useEffect, Component } from 'react';
 import * as THREE from 'three';
 import { AmbientLight } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import '../assets/css/index.css';
+// import '../';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 
@@ -10,25 +10,24 @@ function Scene(props) {
   const { useState } = React;
   const mount = useRef(null);
   const [isAnimating, handleAnimation] = useState(true);
-  const [backgroundColor, handlebackgroundColor] = useState("blue");
+  // const [backgroundColor, handlebackgroundColor] = useState("blue");
 
   const controls = useRef(null);
   let base = null;
-
-function handlebackgroundColor() {
-  if(props.axisVal.zAxis > 1){
-    backgroundColor = "blue";
-  } else {
-    console.log(props.axisVal.zAxis)
-    backgroundColor = "teal";
-  }
-}
-
-
+  let backgroundColor = "blue";
 
   const scene = new THREE.Scene();
   
+  if(props.axisVal.zAxis > 1){
+    backgroundColor = "blue";
+    console.log("blue")
+  } else {
+    backgroundColor = "teal";
+    console.log("teal")
+  }
+
   useEffect(() => {
+
     let width = mount.current.clientWidth;
     let height = mount.current.clientHeight;
 
@@ -73,12 +72,12 @@ function handlebackgroundColor() {
     controls.enableZoom = false;
     controls.update();
 
-    //Define animation actions in here-- will loop and handle animation
+    //Eventually define animation actions in here-- will loop and handle animation
     function animate (value) {
 
-      if (base) {
-        //animations go here
-      }
+      // if (base) {
+      //   //animations go here
+      // }
 
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
@@ -93,7 +92,7 @@ function handlebackgroundColor() {
     
   return ( 
     <React.Fragment>
-      <div className={backgroundColor} ref={mount} />
+      <div className={backgroundColor} id="animation-container" ref={mount} />
       <button className="end-mediation-button" onClick={props.endMeditation}>End Meditation</button>
     </React.Fragment>
   ); 
