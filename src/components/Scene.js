@@ -2,33 +2,38 @@ import React, { useRef, useEffect, Component } from 'react';
 import * as THREE from 'three';
 import { AmbientLight } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import '../assets/css/animation.css';
+import '../assets/css/index.css';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+
 function Scene(props) {
-  const { useRef, useEffect, useState } = React
-  const mount = useRef(null)
-  const [isAnimating, handleAnimation] = useState(true)
-  const controls = useRef(null)
+  const { useState } = React;
+  const mount = useRef(null);
+  const [isAnimating, handleAnimation] = useState(true);
+  const [backgroundColor, handlebackgroundColor] = useState("blue");
+
+  const controls = useRef(null);
   let base = null;
 
+function handlebackgroundColor() {
+  if(props.axisVal.zAxis > 1){
+    backgroundColor = "blue";
+  } else {
+    console.log(props.axisVal.zAxis)
+    backgroundColor = "teal";
+  }
+}
+
+
+
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color('skyblue');
-
-
-  // let positiveR = -r>0 ? -r : r;
-  
-
-  // let test = props.axisVal;
   
   useEffect(() => {
     let width = mount.current.clientWidth;
     let height = mount.current.clientHeight;
-    // let activelyAnimating;
 
-    
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer({ antialias: true })
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     const loader = new GLTFLoader;
 
     //Load and position model, add to scene, assign model to variable
@@ -48,12 +53,9 @@ function Scene(props) {
     // camera.position.x = 20;
     camera.position.y = 2;
     // camera.lookAt(10, 5, 0);
-
-    //Set clear background color in conjunction with alpha:true in renderer & renderer size
-    // scene.background = new THREE.Color(0x00FFFF);
-
-    
-    // renderer.setClearColor( 0xffffff, 0);
+  
+    //Set clear background color in conjunction with alpha:true in renderer & renderer size  
+    renderer.setClearColor( 0xffffff, 0);
     renderer.setSize(width, height);
 
     //Handle re-render when window is resized (triggered via event listener)
@@ -75,20 +77,7 @@ function Scene(props) {
     function animate (value) {
 
       if (base) {
-          // if(Math.floor(props.axisVal.zAxis) > 0){
-          //   console.log(Math.floor(props.axisVal.zAxis));
-          //   scene.background = new THREE.Color('red');
-          // } else if (Math.floor(props.axisVal.zAxis) < 0) {
-          //   console.log(Math.floor(props.axisVal.zAxis));
-          //   scene.background = new THREE.Color('black');
-          //   // scene.background.set(`rgb(255, 0, 0)`);
-          // }           
-          // } else{
-          //   console.log(props.axisVal.zAxis)
-          //   scene.background = new THREE.Color("rgb(100, 0, 0)");
-          // }
-
-          // console.log(base)
+        //animations go here
       }
 
       renderer.render(scene, camera);
@@ -96,19 +85,15 @@ function Scene(props) {
       controls.update();
     }
 
-    console.log(scene)
-
-    // console.log(base);
-
     //Append scene to DOM, start animation
     mount.current.appendChild(renderer.domElement);
     window.addEventListener('resize', handleResize);
     animate();
-  }, [props.axisVal])   
+  }, [])   
     
   return ( 
     <React.Fragment>
-      <div className="animation-container" ref={mount} />
+      <div className={backgroundColor} ref={mount} />
       <button className="end-mediation-button" onClick={props.endMeditation}>End Meditation</button>
     </React.Fragment>
   ); 

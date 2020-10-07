@@ -48,7 +48,7 @@ function Auth() {
   //WRITE data to DB, new function using distance calc
   function writeData(res){
     counter += 1;
-    if(counter === 500){
+    if(counter === 60){
       // console.log(0.5*res.accelerationIncludingGravity.z*1*(1/0.0254));
       let position = 0.5*res.acceleration.z*3*(1/0.0254);
       console.log(position);

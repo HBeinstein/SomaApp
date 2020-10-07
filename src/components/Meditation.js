@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Scene from './Scene';
 import { database } from '../firebase';
 // require('firebase/database');
-import './../assets/css/animation.css'
+import './../assets/css/index.css'
 
 function Meditation() {
   const [view, setView] = useState('startMeditation');
