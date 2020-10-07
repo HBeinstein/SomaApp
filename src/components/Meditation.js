@@ -6,6 +6,7 @@ import './../assets/css/animation.css'
 
 function Meditation() {
   const [view, setView] = useState('startMeditation');
+  const [axisVal, setAxisValue] = useState(0);
 
   //READ data from db, updates on change in value, changes view to render scene
   function getData() {
@@ -13,7 +14,8 @@ function Meditation() {
     console.log(zAxisVal);
 
     zAxisVal.on('value', function(snapshot) {
-      console.log(snapshot.val());
+      setAxisValue(snapshot.val());
+      // console.log(snapshot.val());
     });
 
     setView('meditation');
@@ -28,7 +30,7 @@ function Meditation() {
   if(view === "meditation") {
     return (
       <React.Fragment>
-        <Scene endMeditation={endMeditation}/>
+        <Scene endMeditation={ endMeditation } axisVal={ axisVal }/>
       </React.Fragment>
     );
   } else {

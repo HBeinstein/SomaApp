@@ -4,7 +4,7 @@ import { database } from '../firebase';
 
 function Auth() {
   let transmittingData = false; 
-  let counter = 50;
+  let counter = 0;
 
   //Authorize sensor transmission
 
@@ -26,33 +26,43 @@ function Auth() {
     console.log(transmittingData);
 
     if (!transmittingData){
-      // window.removeEventListener('deviceorientation', printData); //orientation event
       window.removeEventListener('devicemotion', writeData); //acceleration event
     } else {
-      // window.addEventListener('deviceorientation', printData); //orientation event
       window.addEventListener('devicemotion', writeData); //acceleration event
     } 
   }
 
-  function writeData(res){
-    if(counter % 50 === 0) {
-      console.log(`${res.accelerationIncludingGravity.z}`); //acceleration event
-      database.ref('accelerometerData/').set({
-        zAxis: res.accelerationIncludingGravity.z,
-      });
-      counter += 1;
-    } else {
-      counter += 1;
-    }
-  }
-
-  // function writeUserData(userId, name, email, imageUrl) {
-  //   firebase.database().ref('users/' + userId).set({
-  //     username: name,
-  //     email: email,
-  //     profile_picture : imageUrl
-  //   });
+  // WRITE data, old function
+  // function writeData(res){
+  //   if(counter % 60 === 0) {
+  //     console.log(`${res.accelerationIncludingGravity.y}`); //acceleration event
+  //     database.ref('accelerometerData/').set({
+  //       zAxis: res.accelerationIncludingGravity.z,
+  //     });
+  //     counter += 1;
+  //   } else {
+  //     counter += 1;
+  //   }
   // }
+
+  //WRITE data to DB, new function using distance calc
+  function writeData(res){
+    counter += 1;
+    if(counter === 500){
+      // console.log(0.5*res.accelerationIncludingGravity.z*1*(1/0.0254));
+      let position = 0.5*res.acceleration.z*3*(1/0.0254);
+      console.log(position);
+
+      database.ref('accelerometerData/').set({
+        zAxis: position,
+      });
+
+      counter = 0;
+    }
+    
+    // interval = 0.016 seconds
+    // 1/0.01666666753590107 = 60 times
+  }
 
   return (
     <React.Fragment>
