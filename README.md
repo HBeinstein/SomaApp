@@ -16,7 +16,7 @@ See a component wireframe for this project below:
 _Please contact me through my Github or at hannah.beinstein@gmail.com._
 
 ## Technologies Used
-
+ 
 * _HTML_
 * _CSS_
 * _JavaScript_
