@@ -20,7 +20,7 @@ _Please contact me through my Github or at hannah.beinstein@gmail.com._
 * _HTML_
 * _CSS_
 * _JavaScript_
-* _Webpack_
+* _Webpack_  
 * _React_
 * Three.js
 * Blender
