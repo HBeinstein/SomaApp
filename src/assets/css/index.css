@@ -4,6 +4,10 @@
   border: 1px solid red;
 } */
 
+/* * {
+  font-family: "helvetica-neue", san-serif;
+} */
+
 html {
   box-sizing: border-box;
 }
@@ -35,26 +39,29 @@ body {
 
 .blue {
   animation: fadeToBlue 1s linear;
+  animation-fill-mode:forwards;
 }
 
 @keyframes fadeToBlue {
   0% { 
-    background-color: #86D0D9;
+    background-color: #2A455E;
   }
   100% { 
-    background-color: #84C7BE;
+    background-color: #0C1F31;
   }
 }
 
 .teal {
   animation: fadeToTeal 1s linear;
+  animation-fill-mode:forwards;
 }
 
 @keyframes fadeToTeal {
   0% { 
-    background-color: #84C7BE;
+    background-color: #0C1F31;
   }
   100% { 
-    background-color: #86D0D9; 
+    background-color: #2A455E; 
   }
 }
+

@@ -10,11 +10,10 @@ function Scene(props) {
   const { useState } = React;
   const mount = useRef(null);
   const [isAnimating, handleAnimation] = useState(true);
-  // const [backgroundColor, handlebackgroundColor] = useState("blue");
 
   const controls = useRef(null);
   let base = null;
-  let backgroundColor = "blue";
+  let backgroundColor = "teal";
 
   const scene = new THREE.Scene();
   
@@ -36,7 +35,7 @@ function Scene(props) {
     const loader = new GLTFLoader;
 
     //Load and position model, add to scene, assign model to variable
-    loader.load('./models/somacolortest.gltf', gltf => {
+    loader.load('./models/background1.gltf', gltf => {
       gltf.scene.position.set(0, -10, 10);
       scene.add(gltf.scene);
       base = gltf;
@@ -44,15 +43,16 @@ function Scene(props) {
 
     // console.log(base);
     //Add light to scene
-    // const ambient = new THREE.AmbientLight(0X404040, 10);
-     const ambient = new THREE.DirectionalLight(0X404040, 10);
+    const ambient = new THREE.AmbientLight(0X404040, 10);
+    //  const directional = new THREE.DirectionalLight(0X404040, 10);
     scene.add(ambient);
+    // scene.add(directional);
 
     // Set camera position
     camera.position.z = 25;
-    // camera.position.x = 20;
-    camera.position.y = 2;
-    // camera.lookAt(10, 5, 0);
+    camera.position.x = 0;
+    camera.position.y = 0;
+    // camera.lookAt(0, 0, 0);
   
     //Set clear background color in conjunction with alpha:true in renderer & renderer size  
     renderer.setClearColor( 0xffffff, 0);
@@ -67,8 +67,22 @@ function Scene(props) {
       camera.updateProjectionMatrix()
       animate()
     }
+
+    // const vector = new THREE.Vector3();
+    // camera.getWorldDirection(vector)
     
     const controls = new OrbitControls(camera, renderer.domElement);
+
+    // How far you can orbit vertically, upper and lower limits.
+    // Range is 0 to Math.PI radians.
+    controls.minPolarAngle = 0; // radians
+    controls.maxPolarAngle = Math.PI/2; // radians
+
+    // How far you can orbit horizontally, upper and lower limits.
+    // If set, must be a sub-interval of the interval [ - Math.PI, Math.PI ].
+    controls.minAzimuthAngle = - Infinity; // radians
+    controls.maxAzimuthAngle = Infinity; // radians
+
     // controls.screenSpacePanning = false;
     controls.enableZoom = false;
     controls.update();
