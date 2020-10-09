@@ -9,10 +9,21 @@ Soma is a visual meditation/mindfulness web app that uses accelerometer data fro
 
 ## App Wireframe
 See a component wireframe for this project below:
+
 ![Project Wireframe](./src/assets/img/wireframe.png)
 
-## Support and contact details
+## Already Achieved
 
+## Stretch Goals/Further Development
+* Panning/rotating abilities within each meditation. 
+* Multiple mediation scenes to choose from
+* Authentication to persist current authorization status so any logged in user can start a meditation from their computer instead of phone browser
+* Development of mobile app to replace authenticate page and handle authorization functionality that currently happens in mobile browser. 
+
+## Known Bugs
+* Currently sensor misses measurement for every couple of breaths. Hoping to increase accuracy in the future by reworking the motion formula.
+
+## Support and contact details
 _Please contact me through my Github or at hannah.beinstein@gmail.com._
 
 ## Technologies Used
@@ -22,6 +33,7 @@ _Please contact me through my Github or at hannah.beinstein@gmail.com._
 * _JavaScript_
 * _Webpack_  
 * _React_ 
+* Firebase Realtime Database
 * Three.js
 * Blender
 
