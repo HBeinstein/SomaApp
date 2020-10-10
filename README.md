@@ -12,8 +12,6 @@ See a component wireframe for this project below:
 
 ![Project Wireframe](./src/assets/img/wireframe.png)
 
-## Already Achieved
-
 ## Stretch Goals/Further Development
 * Panning/rotating abilities within each meditation. 
 * Multiple mediation scenes to choose from
