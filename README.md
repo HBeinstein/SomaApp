@@ -35,4 +35,8 @@ _Please contact me through my Github or at hannah.beinstein@gmail.com._
 * Three.js
 * Blender
 
+## Attribution
+
+* Landing page image from humaaans illustration library (https://www.humaaans.com/)
+
 Copyright (c) 2020 **_Hannah Beinstein_**

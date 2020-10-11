@@ -1,6 +1,15 @@
 h2 {
   line-height: 120%;
   color: #2D3232;
+  margin-top: 0;
+}
+
+h3 {
+  color: #2D3232;
+}
+
+p {
+  color: #2D3232;
 }
 
 .home-body-flex-container {
@@ -18,18 +27,20 @@ h2 {
 
 .home-body-text {
   height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .home-img-container {
   height: 90vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-content: center; 
 }
 
 .landing-pg-img {
   max-height: 70%;
+  align-self: center;
 }
 
 .home-why-meditation {
