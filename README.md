@@ -10,7 +10,7 @@ Soma is a visual meditation/mindfulness web app that uses accelerometer data fro
 ## App Wireframe
 See a component wireframe for this project below:
 
-![Project Wireframe](./src/assets/img/wireframe.png)
+![Project Wireframe](./public/img/wireframe.png)
 
 ## Stretch Goals/Further Development
 * Panning/rotating abilities within each meditation. 

@@ -10,17 +10,18 @@ function Home() {
           <h2>
             Empowing people to embrace mindfullness in their everyday routines.
           </h2>
+          <a href="/meditations"><button>Get started now</button></a>
         </div>
 
-        <div className="home-img">
-
+        <div className="home-img-container">
+          <img src="./img/landing-pg-img.png" className="landing-pg-img"></img>
         </div>
       </div>
 
       <div className="home-why-meditation">
         <h3>Why meditation?</h3>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <a href="/meditations"><button>Try it out!</button></a>
+        <a href="/about"><button>Learn more</button></a>
       </div>
 
       <div className="home-how-it-works">

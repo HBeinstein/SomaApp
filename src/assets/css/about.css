@@ -1,0 +1,8 @@
+.about-body-text {
+  padding: 0 7em;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}

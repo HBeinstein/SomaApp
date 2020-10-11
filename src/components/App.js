@@ -18,7 +18,8 @@ export default function App() {
     <React.Fragment>
       <Router>
         <div className="navbar-full-container">
-        <Link to="/"><h1>Soma</h1></Link>
+        <Link to="/"><img src="./img/logo5.png" className="logo"></img></Link>
+        
 
           <div className="navbar-links-container">
             <Link to="/"><h5>Home</h5></Link>

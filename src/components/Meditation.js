@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Scene from './Scene';
 import { database } from '../firebase';
-// require('firebase/database');
+import '../assets/css/meditations.css';
 import './../assets/css/index.css'
 
 function Meditation() {
@@ -36,8 +36,35 @@ function Meditation() {
   } else {
     return (
       <React.Fragment>
-        <h3>Meditation Page</h3>
-        <button onClick={getData}>Start Meditation</button>
+          <div className="meditation-content-container">
+            <h3>Click on a meditation below to get started</h3>
+            <p>Vestibulum lectus mauris ultrices eros in. Duis ut diam quam nulla porttitor.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div className="meditation-selection-container">
+              <div>
+                <button onClick={getData}>Start Meditation</button>
+              </div>
+
+              <div>
+                <button>Coming soon!</button>
+              </div>
+
+              <div>
+                <button>Coming soon!</button>
+              </div>
+
+              <div>
+                <button>Coming soon!</button>
+              </div>
+
+              <div>
+                <button>Coming soon!</button>
+              </div>
+
+              <div>
+                <button>Coming soon!</button>
+              </div>
+            </div>
+          </div>
       </React.Fragment>
     );
   }

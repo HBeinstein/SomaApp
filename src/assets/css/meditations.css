@@ -1,0 +1,25 @@
+h3 {
+  text-align: center;
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+
+p {
+  margin: 0 4em;
+}
+
+.meditation-content-container {
+  padding: 0 7em;
+}
+
+.meditation-selection-container {
+  height: 40em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.meditation-selection-container > * {
+  justify-self: center;
+  align-self: end;
+}
