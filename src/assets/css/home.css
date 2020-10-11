@@ -1,0 +1,50 @@
+h2 {
+  color: #2D3232;
+}
+
+.home-body-flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 7em;
+}
+
+.home-body-flex-container > * {
+  width: 50%;
+}
+
+.home-body-text {
+  height: 90vh;
+}
+
+.home-img {
+  height: 90vh;
+}
+
+.home-why-meditation {
+  background-color: #F8F6F4;
+  padding: 0 7em;
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-how-it-works {
+  background-color: #158467;
+  padding: 0 7em;
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-daily-routine {
+  background-color: #ECEBE9;
+  padding: 0 7em;
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

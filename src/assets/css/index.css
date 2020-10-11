@@ -1,27 +1,63 @@
-/* canvas {
-  width: 100vw;
-  height: 100vh;
-  border: 1px solid red;
-} */
-
-/* * {
-  font-family: "helvetica-neue", san-serif;
-} */
-
 html {
   box-sizing: border-box;
 }
 
-/* *,
-*:before,
-*:after {
-  box-sizing: inherit;
-} */
-
 body {
   font-family: sans-serif;
-  padding: 0;
   margin: 0;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: -1px;
+  font-weight: 600;
+  font-size: 2em;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 3.7em;
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 2em;
+  margin: 0;
+}
+
+h5 { 
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+button {
+  outline: none;
+  border-style:solid;
+  outline: none;
+  box-shadow: none;
+  background-color: #FD8562;
+  color: white;
+  border: none;
+  border-radius: .5em;
+  height: 3em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  padding: 0 2.5em;
+}
+
+button:hover {
+  opacity: 80%;
 }
 
 #animation-container {
