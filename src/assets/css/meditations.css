@@ -1,11 +1,15 @@
+/* Meditation Body Text */
 h3 {
   text-align: center;
-  padding-top: 2em;
   padding-bottom: 1em;
 }
 
 p {
-  margin: 0 4em;
+  margin: 0 10em;
+}
+
+.meditation-selection-container img {
+  margin: 3em 0;
 }
 
 .meditation-content-container {
@@ -22,4 +26,12 @@ p {
 .meditation-selection-container > * {
   justify-self: center;
   align-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.meditation-thumbnail {
+  max-width: 40%
+}
+

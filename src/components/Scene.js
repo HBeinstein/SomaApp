@@ -2,9 +2,9 @@ import React, { useRef, useEffect, Component } from 'react';
 import * as THREE from 'three';
 import { AmbientLight } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-// import '../';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
+import '../assets/css/scene.css';
+import './../assets/css/index.css'
 
 function Scene(props) {
   const { useState } = React;
@@ -108,7 +108,7 @@ function Scene(props) {
   return ( 
     <React.Fragment>
       <div className={backgroundColor} id="animation-container" ref={mount} />
-      <button className="end-mediation-button" onClick={props.endMeditation}>End Meditation</button>
+      <button className="end-meditation-button" onClick={props.endMeditation}>End meditation</button>
     </React.Fragment>
   ); 
 } 

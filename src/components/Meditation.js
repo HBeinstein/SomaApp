@@ -15,7 +15,6 @@ function Meditation() {
 
     zAxisVal.on('value', function(snapshot) {
       setAxisValue(snapshot.val());
-      // console.log(snapshot.val());
     });
 
     setView('meditation');
@@ -37,30 +36,36 @@ function Meditation() {
     return (
       <React.Fragment>
           <div className="meditation-content-container">
-            <h3>Click on a meditation below to get started</h3>
-            <p>Vestibulum lectus mauris ultrices eros in. Duis ut diam quam nulla porttitor.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h3>Select a meditation below to get started</h3>
+            <p>Lorem Ipsum vestibulum lectus mauris ultrices eros in. Duis ut diam quam nulla porttitor. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <div className="meditation-selection-container">
               <div>
-                <button onClick={getData}>Start Meditation</button>
+                <img src="./img/meditation-thumbnail.png" className="meditation-thumbnail"></img>
+                <button onClick={getData} className="start-meditation button">Start Meditation</button>
               </div>
 
               <div>
+                <img src="./img/meditation-thumbnail.png" className="meditation-thumbnail"></img>
                 <button>Coming soon!</button>
               </div>
 
               <div>
+                <img src="./img/meditation-thumbnail.png" className="meditation-thumbnail"></img>
                 <button>Coming soon!</button>
               </div>
 
               <div>
+                <img src="./img/meditation-thumbnail.png" className="meditation-thumbnail"></img>
                 <button>Coming soon!</button>
               </div>
 
               <div>
+                <img src="./img/meditation-thumbnail.png" className="meditation-thumbnail"></img>
                 <button>Coming soon!</button>
               </div>
 
               <div>
+                <img src="./img/meditation-thumbnail.png" className="meditation-thumbnail"></img>
                 <button>Coming soon!</button>
               </div>
             </div>

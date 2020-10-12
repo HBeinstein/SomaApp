@@ -1,0 +1,10 @@
+h3 {
+  color: #2D3232;
+}
+
+.auth-redirect-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

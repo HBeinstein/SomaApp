@@ -1,8 +1,10 @@
 .about-body-text {
   padding: 0 7em;
-  height: 90vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  margin-bottom: 3em;
+  text-align: center;
 }

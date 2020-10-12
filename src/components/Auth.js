@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { database } from '../firebase';
+import '../assets/css/index.css';
+import '../assets/css/navbar.css';
 // const database = require('firebase/database');
 
 function Auth() {
+  // const [toggleData, handleToggleData] = useState(false);
   let transmittingData = false; 
   let counter = 0;
 
   //Authorize sensor transmission
-
   function requestPermission(){
     DeviceOrientationEvent.requestPermission()
     .then(res => {
@@ -19,8 +21,7 @@ function Auth() {
     })
   }
 
-   //COLLECT DATA FROM PHONE AND CONSOLE LOG IT (W0RKING ON WRITING TO DB)
-
+   //Collect data from phone and console.log it
   function toggleDataTransmission() {
     transmittingData = !transmittingData;
     console.log(transmittingData);
@@ -31,19 +32,6 @@ function Auth() {
       window.addEventListener('devicemotion', writeData); //acceleration event
     } 
   }
-
-  // WRITE data, old function
-  // function writeData(res){
-  //   if(counter % 60 === 0) {
-  //     console.log(`${res.accelerationIncludingGravity.y}`); //acceleration event
-  //     database.ref('accelerometerData/').set({
-  //       zAxis: res.accelerationIncludingGravity.z,
-  //     });
-  //     counter += 1;
-  //   } else {
-  //     counter += 1;
-  //   }
-  // }
 
   //WRITE data to DB, new function using distance calc
   function writeData(res){
@@ -59,17 +47,25 @@ function Auth() {
 
       counter = 0;
     }
-    
+  
     // interval = 0.016 seconds
     // 1/0.01666666753590107 = 60 times
   }
-
-  return (
-    <React.Fragment>
-      <button onClick={requestPermission}>Authorize</button>
-      <button onClick={toggleDataTransmission}>Start Meditation</button>
-    </React.Fragment>
-  );
+  
+  if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    return (
+      <React.Fragment>
+        <button onClick={requestPermission}>Authorize</button>
+        <button onClick={toggleDataTransmission}>Start Meditation</button>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <div className="auth-redirect-container">
+      <h3>Visit this page on your phone to authorize!</h3>
+      </div>
+    );
+  }
 }
 
 export default Auth;

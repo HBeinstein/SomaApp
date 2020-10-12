@@ -4,8 +4,8 @@ import '../assets/css/navbar.css';
 import '../assets/css/app.css';
 import Home from './Home';
 import About from './About';
-import MeditationControl from './MeditationControl';
-import AuthorizationControl from './AuthControl';
+import Meditation from './Meditation';
+import Auth from './Auth';
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,10 +32,10 @@ export default function App() {
         <div className="app-content-container">
           <Switch>
             <Route path="/authorize">
-              <AuthorizationControl />
+              <Auth />
             </Route>
             <Route path="/meditations">
-              <MeditationControl />
+              <Meditation />
             </Route>
             <Route path="/about">
               <About />

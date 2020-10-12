@@ -6,6 +6,7 @@ h2 {
 
 h3 {
   color: #2D3232;
+  padding: 0;
 }
 
 p {
@@ -45,27 +46,34 @@ p {
 
 .home-why-meditation {
   background-color: #F8F6F4;
-  padding: 0 7em;
+  padding: 0 10em;
   height: 30em;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
 .home-how-it-works {
-  background-color: #2D3232;
-  padding: 0 7em;
+  background-color: #ECEBE9;
+  padding: 0 10em;
   height: 30em;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
 .home-daily-routine {
-  background-color: #ECEBE9;
-  padding: 0 7em;
+  background-color: #158467;
+  padding: 0 10em;
   height: 30em;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+}
+
+.home-why-meditation button, .home-how-it-works button {
+  margin: 2em 0;
 }
