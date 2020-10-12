@@ -59,7 +59,7 @@ function Scene(props) {
     renderer.setSize(width, height);
 
     //Handle re-render when window is resized (triggered via event listener)
-    const handleResize = () => {
+    const handleResize = () => { //Needs work!
       width = mount.current.clientWidth
       height = mount.current.clientHeight
       renderer.setSize(width, height)
@@ -113,5 +113,5 @@ function Scene(props) {
   ); 
 } 
 
- 
+
 export default Scene;

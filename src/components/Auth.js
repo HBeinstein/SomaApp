@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { database } from '../firebase';
 import '../assets/css/index.css';
 import '../assets/css/navbar.css';
-// const database = require('firebase/database');
 
 function Auth() {
-  // const [toggleData, handleToggleData] = useState(false);
   let transmittingData = false; 
   let counter = 0;
 
@@ -33,13 +31,14 @@ function Auth() {
     } 
   }
 
-  //WRITE data to DB, new function using distance calc
+  //WRITE data to DB, calculate position using acceration (s = ut + (1/2)a t^2), s = position, u = velocity at start, t=time, a = constant acceleration rate, Euler's Formula
+
   function writeData(res){
     counter += 1;
     if(counter === 60){
       // console.log(0.5*res.accelerationIncludingGravity.z*1*(1/0.0254));
-      let position = 0.5*res.acceleration.z*3*(1/0.0254);
-      console.log(position);
+      let position = 0.5*res.acceleration.z*3*(1/0.0254); //Needs work!
+      console.log(position); //in inches (converted from meters (per second))
 
       database.ref('accelerometerData/').set({
         zAxis: position,
